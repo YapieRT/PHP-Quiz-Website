@@ -1,3 +1,6 @@
-# PHP-Testing-Website
+# PHP-Quiz-Website
 
-## PHP-Testing-Website - for one of the subjects
+## PHP-Quiz-Website - for one of the subjects
+
+## This is created for simple quizing people
+
