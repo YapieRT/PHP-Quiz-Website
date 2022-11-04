@@ -1,18 +1,18 @@
 <?php
 
-require "config.php";
+  require "config.php";
 
-$conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
+  $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
 
-if(!empty($_SESSION['id'])){
-  $id = $_SESSION['id'];
-  $result = $conn->query("SELECT * FROM `tb_user` WHERE `id` = $id");
-  $row = mysqli_fetch_assoc($result);
-}
-else{
-  header("Location: login.php");
-  exit;
-}
+  if(!empty($_SESSION['id'])){
+    $id = $_SESSION['id'];
+    $result = $conn->query("SELECT * FROM `tb_user` WHERE `id` = $id");
+    $row = mysqli_fetch_assoc($result);
+  }
+  else{
+    header("Location: login.php");
+    exit;
+  }
 
 ?>
 
@@ -36,7 +36,7 @@ else{
         </div>
 
         <div class="container">
-            <a href=""><button type="button" class="central"><i class="icon ion-md-flash"></i>Our Main Test</button></a><br><br><br><br><br><br>
+            <a href="/quiz/quiz.php"><button type="button" class="central"><i class="icon ion-md-flash"></i>Our Main Test</button></a><br><br><br><br><br><br>
             <a href=""><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
             <a href=""><button type="button" class="central"><i class="icon ion-md-add"></i>Create New Test</button></a>
         </div>

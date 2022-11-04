@@ -17,7 +17,7 @@ button {
 
 div,
 p {
-  color: #babecc;
+  color: #747a92;
   text-shadow: 1px 1px 1px #fff;
 }
 
@@ -134,4 +134,26 @@ button.central{
   font-size: 32px;
   padding: 32px;
   margin-top: 32px;
+}
+
+button.quiz{
+  font-size: 16px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+
+
+input.radio:checked {
+  background-color: #747a92;
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+input.radio {
+  width: 5%;
+  height: 5%;
+}
+
+label.radio{
+  font-size: 28px;
 }
