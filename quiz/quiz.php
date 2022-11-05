@@ -5,18 +5,17 @@
     $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
     $test = $conn->query("SELECT * FROM `questions` WHERE `test_name` = '$test_name'");
 
+
     $amount_of_questions = mysqli_num_rows($test);
-    
 
     if(!isset($_SESSION['question'])){
         $_SESSION['question'] = 1;
         $_SESSION['answers'] = array();
-        for($i = 1;$i < $amount_of_questions; $i++){
-            $_SESSION['answers'][$i] = '';
-        }
     }
 
-    if($_SESSION['question'] == 1){
+    $question_num = $_SESSION['question'];
+
+    if($question_num == 1){
         $row = mysqli_fetch_assoc($test);
         $question = $row['question'];
         $option_1 = $row['option_1'];
@@ -26,7 +25,7 @@
     }
     else{
 
-        for($i = 1; $i <= $_SESSION['question']; $i++){
+        for($i = 1; $i <= $question_num; $i++){
             $row = $test->fetch_assoc();
         }
         $question = $row['question'];
@@ -39,16 +38,29 @@
 
     if(isset($_POST['result'])){
         header("Location: result.php");
+
+        if(isset($_POST['radio'])){
+            $_SESSION['answers'][$question_num] = $_POST['radio'];
+        }   
+
     }
 
     if(isset($_POST['next'])){
         $_SESSION['question'] = $_SESSION['question'] + 1;
+
+        if(isset($_POST['radio'])){
+        $_SESSION['answers'][$question_num] = $_POST['radio'];
+        }   
 
         header("Location: quiz.php");
     }
 
     if(isset($_POST['previous'])){
         $_SESSION['question'] = $_SESSION['question'] - 1;
+
+        if(isset($_POST['radio'])){
+            $_SESSION['answers'][$question_num] = $_POST['radio'];
+        }   
 
         header("Location: quiz.php");
     }
@@ -79,19 +91,19 @@
             
             <form method='post'>
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php $option_1?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_1;?>'/>
                     <span><?php echo $option_1; ?></span>
                 </label>
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php $option_2?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_2;?>'/>
                     <span><?php echo $option_2; ?></span>
                 </label class = 'radio'>
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php $option_3?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_3;?>'/>
                     <span><?php echo $option_3; ?></span>
                 </label>
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php $option_4?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_4;?>'/>
                     <span><?php echo $option_4; ?></span>
                 </label>
 

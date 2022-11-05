@@ -2,6 +2,7 @@
 
   require "config.php";
   unset($_SESSION['question']);
+  unset($_SESSION['answers']);
 
   $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
 
