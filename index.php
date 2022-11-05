@@ -1,6 +1,7 @@
 <?php
 
   require "config.php";
+  unset($_SESSION['question']);
 
   $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
 
@@ -36,9 +37,11 @@
         </div>
 
         <div class="container">
-            <a href="/quiz/quiz.php"><button type="button" class="central"><i class="icon ion-md-flash"></i>Our Main Test</button></a><br><br><br><br><br><br>
-            <a href=""><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
-            <a href=""><button type="button" class="central"><i class="icon ion-md-add"></i>Create New Test</button></a>
+            <form method='post'>
+              <a href="/quiz/quiz.php"><button type="button" name = 'quiz' class="central"><i class="icon ion-md-flash"></i>Our Main Test</button></a><br><br><br><br><br><br>
+              <a href=""><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
+              <a href=""><button type="button" class="central"><i cl  ass="icon ion-md-add"></i>Create New Test</button></a>
+            </form>
         </div>
 
     </body>

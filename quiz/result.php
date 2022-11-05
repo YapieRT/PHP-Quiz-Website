@@ -1,4 +1,6 @@
 <?php
+    require "../config.php";
+    unset($_SESSION['question']);
 ?>
 
 <!DOCTYPE html>
