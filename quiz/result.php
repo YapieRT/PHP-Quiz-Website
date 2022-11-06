@@ -2,9 +2,16 @@
     require "../config.php";
     unset($_SESSION['question']);
 
-    $test_name = "main_test";
+    // Specife test name and sql
+
+    $test_name = $_SESSION['test_name'];
+
     $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
     $test = $conn->query("SELECT * FROM `questions` WHERE `test_name` = '$test_name'");
+
+    $id = $_SESSION['id'];
+
+    // Finding amount of right answers
 
     $amount_of_questions = mysqli_num_rows($test);
 
@@ -26,6 +33,20 @@
             $right_answers = $right_answers + 1;
         }
     }
+
+    // Inserting results into database user answers
+
+    $query_id = $conn->query("SELECT * FROM `tb_users` WHERE `id` = '$id'");
+
+    $row = mysqli_fetch_assoc($query_id);
+
+    $username = $row['username'];
+
+
+    $insert_answers = "INSERT INTO `user_answer` (`id`, `username`, `correct_answers`, `total_questions`, `test_name`) VALUES (NULL, '$username', '$right_answers', '$amount_of_questions', '$test_name') ";
+
+    $conn->query($insert_answers);
+
 
 ?>
 

@@ -130,10 +130,17 @@ button.right{
     right: 10px;
 }
 
+button.left{
+  display: block;
+  position:absolute;
+  width: 10%;
+  left: 10px;
+}
+
 button.central{
-  font-size: 32px;
-  padding: 32px;
-  margin-top: 32px;
+  font-size: 24px;
+  padding: 24px;
+  margin-top: 24px;
 }
 
 button.quiz{

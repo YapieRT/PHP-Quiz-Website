@@ -1,12 +1,16 @@
 <?php
     require "../config.php";
 
-    $test_name = "main_test";
+    $test_name = $_SESSION['test_name'];
     $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
     $test = $conn->query("SELECT * FROM `questions` WHERE `test_name` = '$test_name'");
 
 
     $amount_of_questions = mysqli_num_rows($test);
+
+    if(empty($_SESSION["id"])){
+        header("Location: ../login.php");
+    }
 
     if(!isset($_SESSION['question'])){
         $_SESSION['question'] = 1;
@@ -83,7 +87,7 @@
 
     <body>
 
-        <a href="../index.php"><button type="button" class="right"><i class="icon ion-md-return-left"></i>Return</button></a>
+        <a href="../index.php"><button type="button" class="right"><i class="icon ion-md-return-left"></i>Main Page</button></a>
 
         <div class="container">
 
@@ -91,19 +95,22 @@
             
             <form method='post'>
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php echo $option_1;?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_1;?>' <?php if($_SESSION['answers'][$question_num] == $option_1) { echo ' checked';} ?>/>
                     <span><?php echo $option_1; ?></span>
                 </label>
+
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php echo $option_2;?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_2;?>' <?php if($_SESSION['answers'][$question_num] == $option_2) { echo ' checked';} ?>/>
                     <span><?php echo $option_2; ?></span>
                 </label class = 'radio'>
+
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php echo $option_3;?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_3;?>' <?php if($_SESSION['answers'][$question_num] == $option_3) { echo ' checked';} ?>/>
                     <span><?php echo $option_3; ?></span>
                 </label>
+
                 <label class = 'radio'>
-                    <input type='radio' name='radio' class='radio' value='<?php echo $option_4;?>'/>
+                    <input type='radio' name='radio' class='radio' value='<?php echo $option_4;?>' <?php if($_SESSION['answers'][$question_num] == $option_4) { echo ' checked';} ?>/>
                     <span><?php echo $option_4; ?></span>
                 </label>
 
