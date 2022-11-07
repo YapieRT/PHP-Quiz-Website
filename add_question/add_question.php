@@ -20,7 +20,7 @@
 
         $query = "INSERT INTO `questions` (`id`, `question`, `option_1`, `option_2`, `option_3`, `option_4`, `answer`, `test_name`) VALUES (NULL, '$question', '$option_1', '$option_2', '$option_3', '$option_4', '$answer', '$test_name')";
         $conn->query($query);
-        
+
         header("Location: add_question.php");
     }
 
@@ -31,7 +31,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Fine-Tester Login</title>
+        <title>Fine-Tester</title>
         <link rel="stylesheet" href="../style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,7 +45,7 @@
 
         <form action="" class="" method="post" autocomplete="off">
             <div class="segment">
-                <h1>Add new question to main test</h1>
+                <h1>Add new question to test</h1>
                 <p>Please be correct with it</p>
             </div>
 

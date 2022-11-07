@@ -43,7 +43,7 @@ if(isset($_POST['submit'])){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Fine-Tester Login</title>
+        <title>Fine-Tester</title>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

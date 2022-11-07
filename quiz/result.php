@@ -42,8 +42,9 @@
 
     $username = $row['username'];
 
+    $date = date('Y-m-d H:i:s');
 
-    $insert_answers = "INSERT INTO `user_answer` (`id`, `username`, `correct_answers`, `total_questions`, `test_name`) VALUES (NULL, '$username', '$right_answers', '$amount_of_questions', '$test_name') ";
+    $insert_answers = "INSERT INTO `user_answer` (`id`, `username`, `correct_answers`, `total_questions`, `test_name` , `date`) VALUES (NULL, '$username', '$right_answers', '$amount_of_questions', '$test_name' , '$date')";
 
     $conn->query($insert_answers);
 
@@ -55,7 +56,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Main Test</title>
+        <title>Fine-Tester</title>
         <link rel="stylesheet" href="../style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

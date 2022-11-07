@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
       ";
     }
     else{
-      $query = "INSERT INTO `tb_users` (`name`, `username`, `email`, `password` )  VALUES ('$name', '$username', '$email', '$password')";
+      $query = "INSERT INTO `tb_users` (`name`, `username`, `email`, `password`, `persmissons_to_create_test` )  VALUES ('$name', '$username', '$email', '$password', 0)";
       $conn->query($query);
       echo
       "
@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Fine-Tester Registration</title>
+        <title>Fine-Tester</title>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">

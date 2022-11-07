@@ -7,12 +7,15 @@
 
   $conn = new mysqli("localhost:3306", "root", "NEWpassword1!", "users");
 
+
   if(!empty($_SESSION['id'])){
     $id = $_SESSION['id'];
-    $result = $conn->query("SELECT * FROM `tb_user` WHERE `id` = $id");
-    $row = mysqli_fetch_assoc($result);
+    
+    $result = $conn->query("SELECT * FROM `tb_users` WHERE `id` = $id");
+
+    $user = $result->fetch_assoc();
   }
-  else{
+  else {
     header("Location: login.php");
     exit;
   }
@@ -28,7 +31,7 @@
 
     $_SESSION['test_name'] = "main_test";
 
-    header("Location: /quiz/quiz.php");
+    header("Location: /add_question/add_question.php");
   }
 
 ?>
@@ -38,7 +41,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Fine-Tester Registration</title>
+        <title>Fine-Tester</title>
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,9 +63,13 @@
 
               <button type="submit" name = 'add_question' class="central"><i class="icon ion-md-construct"></i>Add question to main test</button><br><br><br><br><br><br><br><br><br><br><br><br>
               
-              <a href=""><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
+              <a href="/check_all_tests/check_all.php"><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
               
-              <a href=""><button type="button" class="central"><i cl  ass="icon ion-md-add"></i>Create New Test</button></a>
+              <?php
+                if($user['persmissons_to_create_test'] == 1){
+                  echo "<a href='/quiz/new_quiz.php'><button type='button' class='central'><i class='icon ion-md-add'></i>Create New Test</button></a>";
+                }
+              ?>
 
             </form>
         </div>
