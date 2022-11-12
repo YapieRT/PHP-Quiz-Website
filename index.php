@@ -46,7 +46,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="/images/icons/ios-checkmark-circle-outline.svg">
+        <link rel="icon" type="image/x-icon" href="/images/icons/black-checkmark-png-4.png">
     </head>
     <body>
         <a href="/results/user_results.php"><button type="button" class="left"><i class="icon ion-md-checkmark-circle-outline"></i>Your Results</button></a>
@@ -61,8 +61,15 @@
             <form method='post'>
               <button type="submit" name = 'quiz' class="central"><i class="icon ion-md-flash"></i>Our Main Test</button>
 
-              <button type="submit" name = 'add_question' class="central"><i class="icon ion-md-construct"></i>Add question to main test</button><br><br><br><br><br><br><br><br><br><br><br><br>
+              <?php
+                if($user['persmissons_to_create_test'] == 1){
+                  echo "<a href='/quiz/new_quiz.php'><button type='submit' type='button' name='add_question' class='central'><i class='icon ion-md-construct'></i>Add question to main test</button></a>";
+                }
+              ?>
+              <br><br><br><br><br><br><br><br><br><br>
               
+              <a href="/results/browse_top_results.php"><button type="button" class="central"><i class="icon ion-md-globe"></i>Browse top results</button></a><br>
+
               <a href="/check_all_tests/check_all.php"><button type="button" class="central"><i class="icon ion-md-book"></i>Check All Tests</button></a><br>
               
               <?php
